@@ -18,7 +18,7 @@ public class DataTokenSamplesPanel extends SamplesPanel {
 		samples.add(new Sample("Simple Data Tokens"));
 		samples.add(new Sample("Hello {user}", Utils.buildMap("user", "Michael")));
 		samples.add(new Sample("You have selected {language_name} languge", 
-				Utils.buildMap("language_name", Tr8n.getInstance().getCurrentLanguage().getEnglishName())));
+				Utils.buildMap("language_name", Tr8n.getCurrentLanguage().getEnglishName())));
 		samples.add(new Sample("Number of messages: {count}", Utils.buildMap("count", 5)));
 
 		samples.add(new Sample("Method Tokens"));

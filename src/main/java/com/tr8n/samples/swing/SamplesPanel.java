@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
@@ -13,6 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import com.tr8n.core.Tr8n;
 import com.tr8n.core.Utils;
 
 import javax.swing.JLabel;
@@ -73,7 +76,7 @@ class SamplesSelectionListener implements ListSelectionListener {
     }
 }
 
-public class SamplesPanel extends JPanel {
+public class SamplesPanel extends JPanel implements Observer {
 
 	List<Sample> samples;
 	
@@ -84,6 +87,7 @@ public class SamplesPanel extends JPanel {
 	 */
 	public SamplesPanel() {
 		initialize();
+        Tr8n.getSession().addObserver(this);
 	}
 
 	protected void initialize() {
@@ -124,5 +128,8 @@ public class SamplesPanel extends JPanel {
 		}
 		return samples;
 	}
-	
+
+	public void update(Observable o, Object arg) {
+		buildSamples();
+	}
 }

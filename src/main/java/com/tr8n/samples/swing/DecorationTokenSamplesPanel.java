@@ -1,6 +1,7 @@
 package com.tr8n.samples.swing;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
 import com.tr8n.core.Tr8n;
 import com.tr8n.core.Utils;

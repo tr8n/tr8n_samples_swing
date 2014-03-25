@@ -53,7 +53,7 @@ class LanguageSelectorListModel extends DefaultListModel {
     private LanguageSelector languageSelector;
     public LanguageSelectorListModel(LanguageSelector languageSelector) {
         this.languageSelector = languageSelector;
-        for (Language language : Tr8n.getInstance().getApplication().getLanguages()) {
+        for (Language language : Tr8n.getApplication().getLanguages()) {
             addElement(language);
         }
     }
@@ -137,7 +137,7 @@ public class LanguageSelector extends JDialog {
 
 	private void onOK() {
         Language language = (Language) languageList.getSelectedValue();
-        Tr8n.getInstance().switchLanguage(language);
+        Tr8n.switchLanguage(language);
         dispose();
     }
 

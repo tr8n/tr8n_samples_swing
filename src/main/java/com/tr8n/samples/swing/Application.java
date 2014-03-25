@@ -65,7 +65,7 @@ class MenuListModel extends DefaultListModel implements Observer {
 	private Application application;
     public MenuListModel(Application application) {
         this.application = application;
-        Tr8n.getInstance().addObserver(this);
+        Tr8n.getSession().addObserver(this);
         translateOptions();
     }
 
@@ -107,7 +107,7 @@ class MenuSelectionListener implements ListSelectionListener {
 
         if (list.getSelectedIndex() == 7) {
             try {
-                Desktop.getDesktop().browse(new URI(Tr8n.getInstance().getApplication().getHost()));
+                Desktop.getDesktop().browse(new URI(Tr8n.getSession().getApplication().getHost()));
             } catch (Exception ex) {
             }
             list.setSelectedIndex(previousIndex);

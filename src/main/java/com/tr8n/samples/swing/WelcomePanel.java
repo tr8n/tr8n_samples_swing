@@ -25,7 +25,7 @@ public class WelcomePanel extends JPanel implements Observer {
 	 * Create the panel.
 	 */
 	public WelcomePanel() {
-        Tr8n.getInstance().addObserver(this);
+        Tr8n.getSession().addObserver(this);
         initialize();
         translateContent();
 	}
