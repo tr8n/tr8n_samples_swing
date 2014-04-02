@@ -168,7 +168,6 @@ public class Application {
 	 */
 	public Application() {
         Tr8n.init("37f812fac93a71088", "a9dc95ff798e6e1d1", "https://sandbox.tr8nhub.com");
-        Tr8n.setCurrentLocale("ru");
 		initialize();
 		
         menuList.setModel(new MenuListModel(this));
