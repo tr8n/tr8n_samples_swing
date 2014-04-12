@@ -1,4 +1,4 @@
-package com.tr8n.samples.swing;
+package com.tr8n.samples.swing.models;
 
 import java.util.Map;
 
@@ -50,7 +50,7 @@ public class Sample {
 	
 	public String getTranslation() {
 		if (translation == null)
-			translation = Tr8n.tr(getLabel(), getDescription(), getTokens());
+			translation = Tr8n.translate(getLabel(), getDescription(), getTokens());
 			
 		return translation;
 	}

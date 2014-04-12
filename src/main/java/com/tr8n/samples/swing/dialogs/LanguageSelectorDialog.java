@@ -1,4 +1,4 @@
-package com.tr8n.samples.swing;
+package com.tr8n.samples.swing.dialogs;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -24,10 +24,8 @@ import com.tr8n.core.Language;
 import com.tr8n.core.Tr8n;
 
 class LanguageSelectorCellRenderer extends DefaultListCellRenderer {
-    private LanguageSelector languageSelector;
-    public LanguageSelectorCellRenderer(LanguageSelector languageSelector) {
-        this.languageSelector = languageSelector;
-    }
+	private static final long serialVersionUID = -2740202087399780686L;
+	
     public Component getListCellRendererComponent(
             JList list, Object value, int index,
             boolean isSelected, boolean cellHasFocus) {
@@ -50,9 +48,9 @@ class LanguageSelectorCellRenderer extends DefaultListCellRenderer {
 }
 
 class LanguageSelectorListModel extends DefaultListModel {
-    private LanguageSelector languageSelector;
-    public LanguageSelectorListModel(LanguageSelector languageSelector) {
-        this.languageSelector = languageSelector;
+	private static final long serialVersionUID = 1833026797055469630L;
+
+	public LanguageSelectorListModel(LanguageSelectorDialog languageSelector) {
         for (Language language : Tr8n.getApplication().getLanguages()) {
             addElement(language);
         }
@@ -60,17 +58,14 @@ class LanguageSelectorListModel extends DefaultListModel {
 }
 
 class LanguageSelectorSelectionListener implements ListSelectionListener {
-    private LanguageSelector languageSelector;
-    public LanguageSelectorSelectionListener(LanguageSelector languageSelector) {
-        this.languageSelector = languageSelector;
-    }
     public void valueChanged(ListSelectionEvent e) {
     }
 }
 
 
-public class LanguageSelector extends JDialog {
-
+public class LanguageSelectorDialog extends JDialog {
+	private static final long serialVersionUID = -2478492556043913311L;
+	
 	private final JPanel contentPanel = new JPanel();
 	private JList languageList;
 	
@@ -79,7 +74,7 @@ public class LanguageSelector extends JDialog {
 	 */
 	public static void main(String[] args) {
 		try {
-			LanguageSelector dialog = new LanguageSelector();
+			LanguageSelectorDialog dialog = new LanguageSelectorDialog();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -90,7 +85,7 @@ public class LanguageSelector extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public LanguageSelector() {
+	public LanguageSelectorDialog() {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -102,8 +97,8 @@ public class LanguageSelector extends JDialog {
 			{
 				languageList = new JList();
 		        languageList.setModel(new LanguageSelectorListModel(this));
-		        languageList.setCellRenderer(new LanguageSelectorCellRenderer(this));
-		        languageList.addListSelectionListener(new LanguageSelectorSelectionListener(this));
+		        languageList.setCellRenderer(new LanguageSelectorCellRenderer());
+		        languageList.addListSelectionListener(new LanguageSelectorSelectionListener());
 				scrollPane.setViewportView(languageList);
 			}
 		}

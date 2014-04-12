@@ -1,4 +1,4 @@
-package com.tr8n.samples.swing;
+package com.tr8n.samples.swing.models;
 
 import java.text.AttributedString;
 import java.util.Map;
@@ -19,7 +19,7 @@ public class AttributedStringSample extends Sample {
 	
 	public AttributedString getAttributedString() {
 		if (translation == null)
-			translation =  Tr8n.tras(getLabel(), getDescription(), getTokens()); 
+			translation =  (AttributedString) Tr8n.translateStyledString(getLabel(), getDescription(), getTokens()); 
 		return translation;
 	}
 	

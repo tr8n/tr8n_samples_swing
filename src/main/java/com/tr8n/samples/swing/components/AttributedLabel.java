@@ -1,4 +1,4 @@
-package com.tr8n.samples.swing;
+package com.tr8n.samples.swing.components;
 
 import java.awt.Graphics;
 import java.text.AttributedString;
@@ -7,7 +7,9 @@ import javax.swing.JLabel;
 
 public class AttributedLabel extends JLabel {
 
-    AttributedString attributedString;
+	private static final long serialVersionUID = -444379454541307655L;
+	
+	AttributedString attributedString;
 
     public AttributedLabel() {
     	super();

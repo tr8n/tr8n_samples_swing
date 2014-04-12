@@ -1,12 +1,14 @@
-package com.tr8n.samples.swing;
+package com.tr8n.samples.swing.panels;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import com.tr8n.core.Tr8n;
 import com.tr8n.core.Utils;
+import com.tr8n.samples.swing.models.Sample;
 
 public class DataTokenSamplesPanel extends SamplesPanel {
+
+	private static final long serialVersionUID = 2384597753567229884L;
 
 	public DataTokenSamplesPanel() {
 		super();

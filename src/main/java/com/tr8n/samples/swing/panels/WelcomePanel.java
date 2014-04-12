@@ -1,4 +1,4 @@
-package com.tr8n.samples.swing;
+package com.tr8n.samples.swing.panels;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -78,12 +78,12 @@ public class WelcomePanel extends JPanel implements Observer {
 	}
 	
     private void translateContent() {
-    	lblWelcome.setText(Tr8n.tr("Welcome to Tr8n Demo"));
+    	lblWelcome.setText(Tr8n.translate("Welcome to Tr8n Demo"));
 		txtMessage.setText(
 			"<center>\n" 
-			+ Tr8n.tr("This application demonstrates some of Tr8n's capabilities.") 
+			+ Tr8n.translate("This application demonstrates some of Tr8n's capabilities.") 
 			+ "<br>" 
-			+ Tr8n.tr("Use the menu on the left to choose a sample.") 
+			+ Tr8n.translate("Use the menu on the left to choose a sample.") 
 			+ "</center>"
 		);
     }

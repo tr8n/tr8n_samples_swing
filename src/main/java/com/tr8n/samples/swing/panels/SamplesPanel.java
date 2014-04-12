@@ -1,7 +1,9 @@
-package com.tr8n.samples.swing;
+package com.tr8n.samples.swing.panels;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -9,29 +11,24 @@ import java.util.Observer;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import com.tr8n.core.Tr8n;
-import com.tr8n.core.Utils;
-
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-
-import java.awt.Font;
-
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
-
-import java.awt.Color;
-
-import javax.swing.UIManager;
+import com.tr8n.samples.swing.models.Sample;
 
 class SamplesCellRenderer extends DefaultListCellRenderer {
-    private SamplesPanel samples;
+	private static final long serialVersionUID = 1995848706016559292L;
+	
+	private SamplesPanel samples;
     public SamplesCellRenderer(SamplesPanel samples) {
         this.samples = samples;
     }
@@ -58,9 +55,9 @@ class SamplesCellRenderer extends DefaultListCellRenderer {
 }
 
 class SamplesListModel extends DefaultListModel {
-    private SamplesPanel samples;
-    public SamplesListModel(SamplesPanel samples) {
-        this.samples = samples;
+	private static final long serialVersionUID = -5252552440151118199L;
+
+	public SamplesListModel(SamplesPanel samples) {
         for (Sample sample : samples.getSamples()) {
             addElement(sample);
         }
@@ -68,15 +65,12 @@ class SamplesListModel extends DefaultListModel {
 }
 
 class SamplesSelectionListener implements ListSelectionListener {
-    private SamplesPanel samples;
-    public SamplesSelectionListener(SamplesPanel samples) {
-        this.samples = samples;
-    }
     public void valueChanged(ListSelectionEvent e) {
     }
 }
 
 public class SamplesPanel extends JPanel implements Observer {
+	private static final long serialVersionUID = -7822097311653319623L;
 
 	List<Sample> samples;
 	
@@ -100,7 +94,7 @@ public class SamplesPanel extends JPanel implements Observer {
 		scrSamples.setViewportView(samplesList);
 		samplesList.setModel(new SamplesListModel(this));
 		samplesList.setCellRenderer(new SamplesCellRenderer(this));
-		samplesList.addListSelectionListener(new SamplesSelectionListener(this));
+		samplesList.addListSelectionListener(new SamplesSelectionListener());
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(UIManager.getColor("CheckBox.background"));
@@ -108,7 +102,7 @@ public class SamplesPanel extends JPanel implements Observer {
 		add(panel, BorderLayout.NORTH);
 		panel.setLayout(new BorderLayout(0, 0));
 		
-		lblHeader = new JLabel("Header");
+		lblHeader = new JLabel();
 		lblHeader.setFont(new Font("Helvetica", Font.PLAIN, 22));
 		lblHeader.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblHeader, BorderLayout.NORTH);		

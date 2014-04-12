@@ -1,12 +1,14 @@
-package com.tr8n.samples.swing;
+package com.tr8n.samples.swing.panels;
 
 import java.util.ArrayList;
-import java.util.Observable;
 
-import com.tr8n.core.Tr8n;
 import com.tr8n.core.Utils;
+import com.tr8n.samples.swing.models.AttributedStringSample;
+import com.tr8n.samples.swing.models.Sample;
 
 public class DecorationTokenSamplesPanel extends SamplesPanel {
+
+	private static final long serialVersionUID = 366079335585670887L;
 
 	public DecorationTokenSamplesPanel() {
 		super();

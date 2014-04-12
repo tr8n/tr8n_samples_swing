@@ -1,10 +1,14 @@
-package com.tr8n.samples.swing;
+package com.tr8n.samples.swing.panels;
 
 import java.util.ArrayList;
 
 import com.tr8n.core.Utils;
+import com.tr8n.samples.swing.models.AttributedStringSample;
+import com.tr8n.samples.swing.models.Sample;
 
 public class CombinedTokensSamplesPanel  extends SamplesPanel {
+
+	private static final long serialVersionUID = -3258052902074140586L;
 
 	public CombinedTokensSamplesPanel() {
 		super();

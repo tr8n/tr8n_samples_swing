@@ -1,9 +1,10 @@
-package com.tr8n.samples.swing;
+package com.tr8n.samples.swing.panels;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -14,11 +15,13 @@ import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 
 import com.tr8n.core.Utils;
-
-import java.awt.Font;
-import java.text.AttributedString;
+import com.tr8n.samples.swing.components.AttributedLabel;
+import com.tr8n.samples.swing.models.AttributedStringSample;
+import com.tr8n.samples.swing.models.Sample;
 
 public class SampleListItem extends JPanel {
+
+	private static final long serialVersionUID = 1050865463391736606L;
 
 	private Sample sample;
 

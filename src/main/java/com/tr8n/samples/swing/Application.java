@@ -6,7 +6,6 @@ import java.awt.Component;
 import java.awt.Desktop;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.lang.reflect.Constructor;
 import java.net.URI;
 import java.util.Observer;
 
@@ -23,13 +22,10 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import com.tr8n.core.Tr8n;
+import com.tr8n.samples.swing.dialogs.LanguageSelectorDialog;
 
 class MenuListCellRenderer extends DefaultListCellRenderer {
 	private static final long serialVersionUID = -7163313137041127573L;
-	private Application application;
-    public MenuListCellRenderer(Application application) {
-        this.application = application;
-    }
     public Component getListCellRendererComponent(
             JList list, Object value, int index,
             boolean isSelected, boolean cellHasFocus) {
@@ -62,23 +58,21 @@ class MenuListCellRenderer extends DefaultListCellRenderer {
 
 class MenuListModel extends DefaultListModel implements Observer {
 	private static final long serialVersionUID = -8606017570226135306L;
-	private Application application;
-    public MenuListModel(Application application) {
-        this.application = application;
+    public MenuListModel() {
         Tr8n.getSession().addObserver(this);
         translateOptions();
     }
 
     private void translateOptions() {
         removeAllElements();
-        addElement(Tr8n.tr("Main Menu"));
-        addElement(Tr8n.tr("Welcome"));
-        addElement(Tr8n.tr("Data Tokens Demo"));
-        addElement(Tr8n.tr("Decoration Tokens Demo"));
-        addElement(Tr8n.tr("Combined Tokens Demo"));
-        addElement(Tr8n.tr("Languages"));
-        addElement(Tr8n.tr("Change Language"));
-        addElement(Tr8n.tr("Open Translator"));
+        addElement(Tr8n.translate("Main Menu"));
+        addElement(Tr8n.translate("Welcome"));
+        addElement(Tr8n.translate("Data Tokens Demo"));
+        addElement(Tr8n.translate("Decoration Tokens Demo"));
+        addElement(Tr8n.translate("Combined Tokens Demo"));
+        addElement(Tr8n.translate("Languages"));
+        addElement(Tr8n.translate("Change Language"));
+        addElement(Tr8n.translate("Open Translator"));
     }
 
     public void update(java.util.Observable observable, java.lang.Object o) {
@@ -98,7 +92,7 @@ class MenuSelectionListener implements ListSelectionListener {
             return;
         JList list = (JList)e.getSource();
         if (list.getSelectedIndex() == 6) {
-            LanguageSelector dialog = new LanguageSelector();
+            LanguageSelectorDialog dialog = new LanguageSelectorDialog();
             dialog.pack();
             dialog.setVisible(true);
             list.setSelectedIndex(previousIndex);
@@ -116,25 +110,25 @@ class MenuSelectionListener implements ListSelectionListener {
 
         if (list.getSelectedIndex() == 1) {
             previousIndex = list.getSelectedIndex();
-            application.switchPanel("com.tr8n.samples.swing.WelcomePanel");
+            application.switchPanel("com.tr8n.samples.swing.panels.WelcomePanel");
             return;
         }
 
         if (list.getSelectedIndex() == 2) {
             previousIndex = list.getSelectedIndex();
-            application.switchPanel("com.tr8n.samples.swing.DataTokenSamplesPanel");
+            application.switchPanel("com.tr8n.samples.swing.panels.DataTokenSamplesPanel");
             return;
         }
 
         if (list.getSelectedIndex() == 3) {
             previousIndex = list.getSelectedIndex();
-            application.switchPanel("com.tr8n.samples.swing.DecorationTokenSamplesPanel");
+            application.switchPanel("com.tr8n.samples.swing.panels.DecorationTokenSamplesPanel");
             return;
         }
         
         if (list.getSelectedIndex() == 4) {
             previousIndex = list.getSelectedIndex();
-            application.switchPanel("com.tr8n.samples.swing.CombinedTokensSamplesPanel");
+            application.switchPanel("com.tr8n.samples.swing.panels.CombinedTokensSamplesPanel");
             return;
         }
     }
@@ -168,10 +162,12 @@ public class Application {
 	 */
 	public Application() {
         Tr8n.init("37f812fac93a71088", "a9dc95ff798e6e1d1", "https://sandbox.tr8nhub.com");
+        Tr8n.getConfig().addTokenizerClass("styled", "com.tr8n.swing.tokenizers.AttributedStringTokenizer");
+        
 		initialize();
 		
-        menuList.setModel(new MenuListModel(this));
-        menuList.setCellRenderer(new MenuListCellRenderer(this));
+        menuList.setModel(new MenuListModel());
+        menuList.setCellRenderer(new MenuListCellRenderer());
         menuList.addListSelectionListener(new MenuSelectionListener(this));
         menuList.setSelectedIndex(1);
 	}
@@ -181,9 +177,9 @@ public class Application {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 790, 590);
+		frame.setBounds(100, 100, 1200, 800);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setTitle(Tr8n.tr("Tr8n Sample Application"));
+		frame.setTitle(Tr8n.translate("Tr8n Sample Application"));
 
 		JSplitPane splitPane = new JSplitPane();
 		splitPane.setResizeWeight(0.2);
@@ -202,9 +198,7 @@ public class Application {
 	
 	 public void switchPanel(String className) {
         try {
-            Class klass = Class.forName(className);
-            Constructor constructor = klass.getConstructor();
-            JPanel frame = (JPanel) constructor.newInstance();
+            JPanel frame = (JPanel) Class.forName(className).getConstructor().newInstance();
             containerPanel.removeAll();
             containerPanel.add(frame, BorderLayout.CENTER);
             containerPanel.updateUI();
