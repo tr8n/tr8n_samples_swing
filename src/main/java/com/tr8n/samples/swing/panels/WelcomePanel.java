@@ -35,7 +35,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 
-import com.tr8n.core.Tr8n;
+import com.tr8n.swing.Tr8n;
 
 public class WelcomePanel extends JPanel implements Observer {
 	private static final long serialVersionUID = -8261825120743496568L;

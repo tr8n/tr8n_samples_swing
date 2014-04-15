@@ -24,7 +24,7 @@ package com.tr8n.samples.swing.panels;
 
 import java.util.ArrayList;
 
-import com.tr8n.core.Tr8n;
+import com.tr8n.swing.Tr8n;
 import com.tr8n.core.Utils;
 import com.tr8n.samples.swing.models.Sample;
 

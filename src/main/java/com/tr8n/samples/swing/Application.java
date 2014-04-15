@@ -43,8 +43,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import com.tr8n.core.Tr8n;
 import com.tr8n.samples.swing.dialogs.LanguageSelectorDialog;
+import com.tr8n.swing.Tr8n;
 
 class MenuListCellRenderer extends DefaultListCellRenderer {
 	private static final long serialVersionUID = -7163313137041127573L;
@@ -186,7 +186,6 @@ public class Application {
 		Tr8n.getCache().reset();
 		
         Tr8n.init("19d88c916db183f90", "641281a8c72f37415", "https://sandbox.tr8nhub.com");
-        Tr8n.getConfig().addTokenizerClass("styled", "com.tr8n.swing.tokenizers.AttributedStringTokenizer");
         
 		initialize();
 		

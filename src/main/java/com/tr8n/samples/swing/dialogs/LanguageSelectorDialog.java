@@ -43,7 +43,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import com.tr8n.core.Language;
-import com.tr8n.core.Tr8n;
+import com.tr8n.swing.Tr8n;
 
 class LanguageSelectorCellRenderer extends DefaultListCellRenderer {
 	private static final long serialVersionUID = -2740202087399780686L;
@@ -54,6 +54,9 @@ class LanguageSelectorCellRenderer extends DefaultListCellRenderer {
 
         JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 
+        Language language = (Language) value;
+        label.setText(language.getEnglishName());
+        
         label.setFont(new Font("Helvetica", Font.PLAIN, 13));
         label.setBorder(new EmptyBorder(10, 10, 10, 10));
 

@@ -24,7 +24,7 @@ package com.tr8n.samples.swing.models;
 
 import java.util.Map;
 
-import com.tr8n.core.Tr8n;
+import com.tr8n.swing.Tr8n;
 
 public class Sample {
 	private String label;
