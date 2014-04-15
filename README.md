@@ -2,12 +2,12 @@
   <img src="https://raw.github.com/tr8n/tr8n/master/doc/screenshots/tr8nlogo.png">
 </p>
 
-Tr8n for Java
+Tr8n Java Swing Samples
 ===
 
 [![Project status](http://stillmaintained.com/tr8n/tr8n_swing_samples.png)](http://stillmaintained.com/tr8n/tr8n_swing_samples.png)
 
-Tr8n Samples for Swing based applications.
+Tr8n Samples for Java Swing based applications.
 
 Installation
 ==================
