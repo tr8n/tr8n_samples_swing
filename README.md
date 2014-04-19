@@ -21,7 +21,7 @@ $ mvn clean compile assembly:single
 $ java -jar target/swing-samples-0.1.0-j-with-dependencies.jar
 ```
 
-Alternatively, you can open the project in eclipse and run the com.tr8n.samples.swing.Application from there.
+Alternatively, you can open the project in Eclipse and run the com.tr8n.samples.swing.Application from there.
 
 
 Where can I get more information?
