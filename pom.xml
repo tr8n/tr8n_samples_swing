@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.tr8nhub</groupId>
-	<artifactId>swing-samples</artifactId>
-	<version>0.1.0</version>
+	<groupId>com.translationexchange</groupId>
+	<artifactId>tml-swing-samples</artifactId>
+	<version>0.2.1</version>
 
 	<dependencies>
 		<dependency>
@@ -13,9 +13,9 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.tr8nhub</groupId>
-			<artifactId>swing-clientsdk</artifactId>
-			<version>0.1.0</version>
+			<groupId>com.translationexchange</groupId>
+			<artifactId>tml-swing</artifactId>
+			<version>0.2.1</version>
 		</dependency>
 	</dependencies>
 
@@ -27,7 +27,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.tr8n.samples.swing.Application</mainClass>
+							<mainClass>com.translationexchange.samples.swing.Application</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
@@ -37,7 +37,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.tr8n.samples.swing.Application</mainClass>
+							<mainClass>com.translationexchange.samples.swing.Application</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>

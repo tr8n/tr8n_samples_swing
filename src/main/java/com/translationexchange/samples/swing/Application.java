@@ -1,26 +1,35 @@
-/*
- *  Copyright (c) 2014 Michael Berkovich, http://tr8nhub.com All rights reserved.
+/**
+ * Copyright (c) 2015 Translation Exchange, Inc. All rights reserved.
  *
- *  Permission is hereby granted, free of charge, to any person obtaining a copy
- *  of this software and associated documentation files (the "Software"), to deal
- *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
+ *  _______                  _       _   _             ______          _
+ * |__   __|                | |     | | (_)           |  ____|        | |
+ *    | |_ __ __ _ _ __  ___| | __ _| |_ _  ___  _ __ | |__  __  _____| |__   __ _ _ __   __ _  ___
+ *    | | '__/ _` | '_ \/ __| |/ _` | __| |/ _ \| '_ \|  __| \ \/ / __| '_ \ / _` | '_ \ / _` |/ _ \
+ *    | | | | (_| | | | \__ \ | (_| | |_| | (_) | | | | |____ >  < (__| | | | (_| | | | | (_| |  __/
+ *    |_|_|  \__,_|_| |_|___/_|\__,_|\__|_|\___/|_| |_|______/_/\_\___|_| |_|\__,_|_| |_|\__, |\___|
+ *                                                                                        __/ |
+ *                                                                                       |___/
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
  *
- *  The above copyright notice and this permission notice shall be included in
- *  all copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  *
- *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- *  THE SOFTWARE.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.tr8n.samples.swing;
+package com.translationexchange.samples.swing;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -43,8 +52,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import com.tr8n.samples.swing.dialogs.LanguageSelectorDialog;
-import com.tr8n.swing.Tr8n;
+import com.translationexchange.swing.Tml;
+import com.translationexchange.samples.swing.dialogs.LanguageSelectorDialog;
 
 class MenuListCellRenderer extends DefaultListCellRenderer {
 	private static final long serialVersionUID = -7163313137041127573L;
@@ -81,20 +90,20 @@ class MenuListCellRenderer extends DefaultListCellRenderer {
 class MenuListModel extends DefaultListModel implements Observer {
 	private static final long serialVersionUID = -8606017570226135306L;
     public MenuListModel() {
-        Tr8n.getSession().addObserver(this);
+        Tml.getSession().addObserver(this);
         translateOptions();
     }
 
     private void translateOptions() {
         removeAllElements();
-        addElement(Tr8n.translate("Main Menu"));
-        addElement(Tr8n.translate("Welcome"));
-        addElement(Tr8n.translate("Data Tokens Demo"));
-        addElement(Tr8n.translate("Decoration Tokens Demo"));
-        addElement(Tr8n.translate("Combined Tokens Demo"));
-        addElement(Tr8n.translate("Languages"));
-        addElement(Tr8n.translate("Change Language"));
-        addElement(Tr8n.translate("Open Translator"));
+        addElement(Tml.translate("Main Menu"));
+        addElement(Tml.translate("Welcome"));
+        addElement(Tml.translate("Data Tokens Demo"));
+        addElement(Tml.translate("Decoration Tokens Demo"));
+        addElement(Tml.translate("Combined Tokens Demo"));
+        addElement(Tml.translate("Languages"));
+        addElement(Tml.translate("Change Language"));
+        addElement(Tml.translate("Open Translator"));
     }
 
     public void update(java.util.Observable observable, java.lang.Object o) {
@@ -123,7 +132,7 @@ class MenuSelectionListener implements ListSelectionListener {
 
         if (list.getSelectedIndex() == 7) {
             try {
-                Desktop.getDesktop().browse(new URI(Tr8n.getSession().getApplication().getHost()));
+                Desktop.getDesktop().browse(new URI(Tml.getSession().getApplication().getHost()));
             } catch (Exception ex) {
             }
             list.setSelectedIndex(previousIndex);
@@ -132,25 +141,25 @@ class MenuSelectionListener implements ListSelectionListener {
 
         if (list.getSelectedIndex() == 1) {
             previousIndex = list.getSelectedIndex();
-            application.switchPanel("com.tr8n.samples.swing.panels.WelcomePanel");
+            application.switchPanel("com.translationexchange.samples.swing.panels.WelcomePanel");
             return;
         }
 
         if (list.getSelectedIndex() == 2) {
             previousIndex = list.getSelectedIndex();
-            application.switchPanel("com.tr8n.samples.swing.panels.DataTokenSamplesPanel");
+            application.switchPanel("com.translationexchange.samples.swing.panels.DataTokenSamplesPanel");
             return;
         }
 
         if (list.getSelectedIndex() == 3) {
             previousIndex = list.getSelectedIndex();
-            application.switchPanel("com.tr8n.samples.swing.panels.DecorationTokenSamplesPanel");
+            application.switchPanel("com.translationexchange.samples.swing.panels.DecorationTokenSamplesPanel");
             return;
         }
         
         if (list.getSelectedIndex() == 4) {
             previousIndex = list.getSelectedIndex();
-            application.switchPanel("com.tr8n.samples.swing.panels.CombinedTokensSamplesPanel");
+            application.switchPanel("com.translationexchange.samples.swing.panels.CombinedTokensSamplesPanel");
             return;
         }
     }
@@ -183,9 +192,10 @@ public class Application {
 	 * Create the application.
 	 */
 	public Application() {
-		Tr8n.getCache().reset();
+		Tml.getCache().reset();
 		
-        Tr8n.init("19d88c916db183f90", "641281a8c72f37415", "https://sandbox.tr8nhub.com");
+		// TODO: change to the new init
+		Tml.init("19d88c916db183f90", "641281a8c72f37415", "https://sandbox.tr8nhub.com");
         
 		initialize();
 		
@@ -202,7 +212,7 @@ public class Application {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1200, 800);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setTitle(Tr8n.translate("Tr8n Sample Application"));
+		frame.setTitle(Tml.translate("Tr8n Sample Application"));
 
 		JSplitPane splitPane = new JSplitPane();
 		splitPane.setResizeWeight(0.2);
@@ -226,7 +236,7 @@ public class Application {
             containerPanel.add(frame, BorderLayout.CENTER);
             containerPanel.updateUI();
         } catch (Exception ex) {
-        	Tr8n.getLogger().logException(ex);
+        	Tml.getLogger().logException(ex);
         }
 	 }
 
