@@ -192,8 +192,6 @@ public class Application {
 	 * Create the application.
 	 */
 	public Application() {
-		Tml.getCache().reset();
-		
 		// TODO: change to the new init
 		Tml.init("19d88c916db183f90", "641281a8c72f37415", "https://sandbox.tr8nhub.com");
         
